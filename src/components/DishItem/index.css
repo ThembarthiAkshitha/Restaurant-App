@@ -1,0 +1,97 @@
+.dish-not-available-style {
+  color: #d61317;
+}
+.dish-item-bg-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #7a7777;
+  border-radius: 15px;
+  margin: 2px;
+  padding: 5px;
+}
+.description-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.dish-item-heading {
+  color: #0f0d0d;
+  font-size: 20px;
+}
+.dish-details-container {
+  display: flex;
+}
+.dish-currency-details-container {
+  display: flex;
+  align-items: center;
+  color: #383736;
+}
+.dish-details-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.dish-description {
+  color: #6e6d6d;
+}
+.dish-calories {
+  color: #d9b516;
+}
+.increment-decrement-container {
+  display: flex;
+  background-color: #0b6e2f;
+  border-radius: 20px;
+  width: 100px;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  height: 30px;
+}
+.button {
+  background-color: transparent;
+  border: 0px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.dish-image {
+  height: 100%;
+  width: 20%;
+}
+.dish-availability {
+  color: #000000;
+}
+.dish-available-style {
+  color: #132487;
+}
+.green-dot-border {
+  border: 2px solid #114525;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.red-dot-border {
+  border: 2px solid #5c090b;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.green-dot-para {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #114525;
+}
+.red-dot-para {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #5c090b;
+}
+.first-container {
+  width: 5%;
+}
