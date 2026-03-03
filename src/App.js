@@ -31,6 +31,18 @@ class App extends Component {
         cartList: [...prevState.cartList, details],
         totalDishItems: prevState.totalDishItems + 1,
       }))
+    } else {
+      const {cartList} = this.state
+      const updatedCartList = cartList.map(each => {
+        if (each.dishId === details.dishId) {
+          const updatedDetails = {...each, count: each.count + details.count}
+          return updatedDetails
+        }
+        return each
+      })
+      this.setState({
+        cartList: updatedCartList,
+      })
     }
   }
 
@@ -62,55 +74,35 @@ class App extends Component {
     })
   }
   decrementCartItemQuantity = dishId => {
-  this.setState(prevState => {
-    const updatedCartList = prevState.cartList
-      .map(each => {
-        if (each.dishId === dishId) {
-          if (each.count > 1) {
-            return {...each, count: each.count - 1}
+    this.setState(prevState => {
+      const updatedCartList = prevState.cartList
+        .map(each => {
+          if (each.dishId === dishId) {
+            if (each.count > 1) {
+              return {...each, count: each.count - 1}
+            }
+            return null
           }
-          return null 
-        }
-        return each
-      })
-      .filter(each => each !== null) 
+          return each
+        })
+        .filter(each => each !== null)
 
-    return {
-      cartList: updatedCartList,
-      totalDishItems: prevState.totalDishItems - 1,
-    }
-  })
-}
-
-  // decrementCartItemQuantity = dishId => {
-  //   const {cartList} = this.state
-  //   const updatedCartList = cartList.map(each => {
-  //     if (each.dishId === dishId) {
-  //       if (each.count > 1){
-  //         const updatedDetails = {...each, count: each.count - 1}
-  //         return updatedDetails
-  //       }
-  //       else{
-  //         this.removeCartItem(dishId)
-
-  //       }
-  //     }
-  //     return each
-  //   })
-  //   this.setState({
-  //     cartList: updatedCartList,
-  //   })
-  // }
+      return {
+        cartList: updatedCartList,
+      }
+    })
+  }
 
   render() {
     const {restoName, totalDishItems, cartList} = this.state
+    const length = cartList.length
     console.log(cartList)
     return (
       <RestoNameContext.Provider
         value={{
           restoName,
           cartList,
-          totalDishItems,
+          totalDishItems: length,
           onSetRestoName: this.onSetRestoName,
           addCartItem: this.addCartItem,
           removeCartItem: this.removeCartItem,

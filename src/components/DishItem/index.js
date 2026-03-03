@@ -87,7 +87,7 @@ class DishItem extends Component {
                     Customizations available
                   </p>
                 )}
-                {dishAvailability && (
+                {dishAvailability && count > 0 && (
                   <button
                     className="add-to-cart-btn"
                     onClick={onClickAddToCart}

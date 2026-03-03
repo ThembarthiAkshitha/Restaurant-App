@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import './index.css'
 import Cookies from 'js-cookie'
 
@@ -36,7 +37,6 @@ class Login extends Component {
     const response = await fetch(url, options)
     if (response.ok === true) {
       const data = await response.json()
-
       this.onSubmitSuccess(data)
     } else {
       const data = await response.json()
@@ -48,6 +48,7 @@ class Login extends Component {
       username: event.target.value,
     })
   }
+
   onPassword = event => {
     this.setState({
       password: event.target.value,
@@ -56,6 +57,10 @@ class Login extends Component {
 
   render() {
     const {showErrorMsg, errorMsg} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
     return (
       <div className="login-form-main-bg-container">
         <form onSubmit={this.onFormSubmit} className="form-container">

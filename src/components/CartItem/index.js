@@ -24,7 +24,7 @@ const CartItem = props => (
           decrementCartItemQuantity(dishId)
         }
       }
-      const price = dishPrice*count
+      const price = dishPrice * count
 
       return (
         <li className="cart-dish-item-bg-container">
