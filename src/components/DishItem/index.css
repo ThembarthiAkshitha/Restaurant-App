@@ -53,6 +53,7 @@
   border: 0px;
   color: #ffffff;
   cursor: pointer;
+  outline: none;
 }
 .dish-image {
   height: 100%;
@@ -94,4 +95,16 @@
 }
 .first-container {
   width: 5%;
+}
+.add-to-cart-btn {
+  background-color: #d67820;
+  color: #ffffff;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  height: 30px;
+  width: 150px;
+  margin-top: 5px;
+  border-radius: 10px;
 }

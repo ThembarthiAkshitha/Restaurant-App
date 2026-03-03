@@ -1,7 +1,8 @@
 import {Component} from 'react'
 import './index.css'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
 import DishItem from '../DishItem'
+import RestoNameContext from '../../context/CartContext'
+import Header from '../Header'
 
 const apiStatusConstants = {
   success: 'SUCCESS',
@@ -32,18 +33,23 @@ class RestoCafte extends Component {
     branchName: '',
     restaurantImageUrl: '',
     listOfItems: [],
-    totalDishItems: 0,
     apiStatus: apiStatusConstants.inProgress,
   }
+  static contextType = RestoNameContext
 
   componentDidMount() {
     this.getDetailsOfMenu()
   }
 
   onSuccesView = data => {
+    console.log(data)
     const menuData = data[0].table_menu_list
-    const branchName = data[0].branch_name
+    const restaurantName = data[0].restaurant_name
     const restaurantImage = data[0].restaurant_image
+
+    const {onSetRestoName} = this.context
+    onSetRestoName(restaurantName)
+
     const menuList = menuData.map(each => ({
       menuCategory: each.menu_category,
       menuCategoryId: each.menu_category_id,
@@ -77,7 +83,7 @@ class RestoCafte extends Component {
       categoryDishesList,
       restaurantImageUrl: restaurantImage,
       activeId: categoryList[0].categoryId,
-      branchName,
+      restaurantName,
       apiStatus: apiStatusConstants.success,
     })
   }
@@ -92,18 +98,6 @@ class RestoCafte extends Component {
     this.setState({
       activeId: id,
     })
-  }
-
-  onTotalIncrement = () => {
-    this.setState(prevState => ({
-      totalDishItems: prevState.totalDishItems + 1,
-    }))
-  }
-
-  onTotalDecrement = () => {
-    this.setState(prevState => ({
-      totalDishItems: prevState.totalDishItems - 1,
-    }))
   }
 
   getDetailsOfMenu = async () => {
@@ -125,13 +119,7 @@ class RestoCafte extends Component {
   renderFailureView = () => <h1>Failed</h1>
 
   renderRestaurantView = () => {
-    const {
-      branchName,
-      categoryList,
-      categoryDishesList,
-      activeId,
-      totalDishItems,
-    } = this.state
+    const {categoryList, categoryDishesList, activeId} = this.state
     const filteredList = categoryDishesList.filter(
       each => each.categoryId === activeId,
     )
@@ -141,16 +129,7 @@ class RestoCafte extends Component {
     // console.log('Category Dishes List:', categoryDishesList)
     return (
       <div className="resto-mainbg-container">
-        <div className="resto-header-container">
-          <h1 className="header-heading">{branchName}</h1>
-          <div className="cart-container">
-            <p className="my-orders-para">My Orders</p>
-            <div className="cart-image-and-count-container">
-              <AiOutlineShoppingCart className="cart-image" />
-              <p className="cart-count-para">{totalDishItems}</p>
-            </div>
-          </div>
-        </div>
+        <Header />
         <ul className="unordered-list-container">
           {categoryList.map(each => (
             <ButtonItem

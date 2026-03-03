@@ -1,0 +1,67 @@
+.resto-header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  list-style-type: none;
+}
+.header-heading {
+  font-size: 30px;
+}
+.header-cart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* width: 50%; */
+  justify-content: space-between;
+  /* border: 1px solid #000000; */
+}
+.cart-count-para {
+  background-color: #d67820;
+  color: #ffffff;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.cart-image-and-count-container {
+  display: flex;
+}
+.cart-image {
+  align-self: center;
+  height: 30px;
+  width: 30px;
+}
+
+.my-orders-para {
+  display: none;
+}
+
+@media (min-width: 577px) {
+  .my-orders-para {
+    display: block;
+  }
+}
+.log-out-btn {
+  background-color: #d67820;
+  color: #ffffff;
+  border: 0px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+}
+.link-style {
+  text-decoration: none;
+  color: inherit; /* keeps same text color */
+  list-style-type: none;
+}
+.cart-button {
+  background-color: transparent;
+  border: 0px;
+}

@@ -1,0 +1,33 @@
+.cart-details-mainbg-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.cart-dishes-list-items {
+  list-style-type: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.remove-all-btn {
+  border: 1px solid #d67820;
+  color: #d67820;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  height: 30px;
+  width: 150px;
+  margin-top: 5px;
+  border-radius: 10px;
+  align-self: flex-end;
+}
+.main-headeing {
+  color: #d67820;
+  font-size: 20px;
+  text-align: center;
+}
+.empty-cart-image{
+  height: 300px;
+  width: 300px;
+}
